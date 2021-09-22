@@ -155,3 +155,7 @@ getMeal(mealDB);
 // getVid(videoGame);
 
 
+// CARD FLIP FUNCTION
+$(".card").click(function(e){
+    $(e.currentTarget).toggleClass("flip");
+  });
