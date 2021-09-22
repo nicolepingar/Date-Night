@@ -1,6 +1,6 @@
 var videoGameApiKey = "8e16f8ff07d448cca1ccbdac1846964d"
 
-// fetch video game Api data and store in local storage
+// fetch video game Api data by game ID by digits and store in local storage
 
 // fetch drink Api data and store in local storage
 
