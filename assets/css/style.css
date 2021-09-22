@@ -21,7 +21,18 @@ header {
     text-align: center;
 }
 
+
+
+
+
+
 /* CSS FOR CARD FLIP */
+
+
+
+
+
+
 
 @mixin flip($speed: 0.5s, $direction: "y") {
     position: relative;
