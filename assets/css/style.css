@@ -1,1 +1,23 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+:root {
+    --dark-purple: #37123C;
+    --fire-opal: #EB5E55;
+    --ruby: #D81E5B;
+    --papaya-whip: #FDF0D5;
+    --cadet: #56666B;
+}
+
+body {
+    background-color: var(--dark-purple);
+    color: var(--papaya-whip);
+}
+
+header {
+    text-align: center;
+}
+.card {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
