@@ -196,3 +196,10 @@ var gameResult = $(".game-result")
 // //     "Italian",
 // //     "Dutch",
 // // ]
+
+
+const card = document.querySelector('.card__inner');
+
+card.addEventListener('click', function (){
+    card.classList.toggle('is-flipped');
+});
