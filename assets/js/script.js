@@ -5,13 +5,10 @@ var mealSelect = $(".meal-select")
 var cuisineSelect = $(".cuisine-select")
 var genreSelect = $(".genre-select")
 var formSubmitButton = $(".button")
+var drinkResult = $(".drink-result")
+var mealResult = $(".meal-result")
+var gameResult = $(".game-result")
 
-
-
-console.log(glassSelection.val());
-console.log(mealSelect.val());
-console.log(cuisineSelect.val());
-console.log(genreSelect.val());
 // fetching full games list database
 
 
@@ -26,47 +23,7 @@ console.log(genreSelect.val());
 
 // function to change display properties of cards from hidden to visible 
 
-
-
-function FormSubmit(event) {
-    event.preventDefault();
-    var glass = glassSelection.val();
-    var meal = mealSelect.val()
-    var cuisine = cuisineSelect.val();
-    var genre = genreSelect.val();
-
-    selectionValues(glass, meal, cuisine, genre)
-
-}
-
-function selectionValues(glass, meal, cuisine, genre) {
-    var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute"
-    function getDrink(drinkDB) {
-        fetch(drinkDB)
-            .then(function (response) {
-
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-
-
-
-                // for (var i = 0; i < data.drinks.length; i++) {
-                //     console.log(data.drinks[i].strGlass);
-                // }
-            })
-    }
-    getDrink(drinkDB);
-}
-
-
-formSubmitButton.on("click", FormSubmit)
-
-
-
-
-// var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood"
+// var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Side"
 // function getMeal(mealDB) {
 //     fetch(mealDB)
 //         .then(function (response) {
@@ -75,37 +32,76 @@ formSubmitButton.on("click", FormSubmit)
 //         })
 //         .then(function (data) {
 //             console.log(data);
-
-//             // for (var i = 0; i < data.meals.length; i++) {
-//             //     console.log(data.meals[i].strArea);
-//             // }
 //         })
+
 // }
 // getMeal(mealDB);
 
+//     for (var i = 0; i < data.meals.length; i++) {
+//         //console.log(data.meals[i].strArea);
 
+//         if (data.meals[i].strArea === "British" && data.meals[i].strCategory === "Beef") {
+//         console.log(data.meals[i].strMeal);
+//     }
 
+//     }
+// })
 
-// var videoGame = "https://api.rawg.io/api/genres?key=8e16f8ff07d448cca1ccbdac1846964d"
-// function getVid(videoGame) {
-//     fetch(videoGame)
-//         .then(function (response) {
+function FormSubmit(event) {
+    event.preventDefault();
+    var glass = glassSelection.val();
+    var glass_ = glass.replace(" ", "_");
+    var meal = mealSelect.val();
+    var cuisine = cuisineSelect.val();
+    var genre = genreSelect.val();
 
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
+    selectionValues(glass_, meal, cuisine, genre);
+}
 
-//             for (var i = 0; i < data.results.length; i++) {
-//                 console.log(data.results[i].name);
-//             }
+function selectionValues(glass_, meal, cuisine, genre) {
+    var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass_
+    function getDrink(drinkDB) {
+        fetch(drinkDB)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                var indexDrink = Math.floor(Math.random() * data.drinks.length)
+                var drinkName = data.drinks[indexDrink].strDrink
+                var drinkNameEl = $("<h4>")
+                drinkNameEl.text(drinkName)
+                drinkResult.append(drinkNameEl)
+                var drinkPic = data.drinks[indexDrink].strDrinkThumb
+                var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 100 })
+                drinkResult.append(drinkPicEl)
+            })
+    }
 
-//         })
-// }
-// getVid(videoGame);
+    var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
+    function getVid(videoGame) {
+        fetch(videoGame)
+            .then(function (response) {
 
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                var indexGames = Math.ceil(Math.random() * 19)
+                var gameName = data.results[indexGames].name;
+                var gameNameEl = $("<h4>")
+                gameNameEl.text(gameName)
+                gameResult.append(gameNameEl)
+                var gamePic = data.results[indexGames].background_image;
+                var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 100 })
+                gameResult.append(gamePicEl)
 
-
+            })
+    }
+    getDrink(drinkDB);
+    getVid(videoGame);
+}
+formSubmitButton.on("click", FormSubmit)
 
 
 
@@ -134,7 +130,6 @@ formSubmitButton.on("click", FormSubmit)
 //     "Pork",
 //     "Pasta",
 // ]
-
 
 // var cuisineOptions = [
 //     "British",
