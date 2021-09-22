@@ -99,3 +99,7 @@ function getVid(videoGame) {
 getVid(videoGame);
 
 
+// CARD FLIP FUNCTION
+$(".card").click(function(e){
+    $(e.currentTarget).toggleClass("flip");
+  });
