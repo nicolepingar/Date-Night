@@ -40,7 +40,7 @@ function FormSubmit(event) {
 }
 
 function selectionValues(glass, meal, cuisine, genre) {
-    var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=g"
+    var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute"
     function getDrink(drinkDB) {
         fetch(drinkDB)
             .then(function (response) {
@@ -48,9 +48,13 @@ function selectionValues(glass, meal, cuisine, genre) {
                 return response.json();
             })
             .then(function (data) {
-                for (var i = 0; i < data.drinks.length; i++) {
-                    console.log(data.drinks[i].strGlass);
-                }
+                console.log(data);
+
+
+
+                // for (var i = 0; i < data.drinks.length; i++) {
+                //     console.log(data.drinks[i].strGlass);
+                // }
             })
     }
     getDrink(drinkDB);
