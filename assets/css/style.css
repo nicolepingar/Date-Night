@@ -14,9 +14,10 @@
     padding: 0;
 }
 
-.recipe-button {
-    width: 25px;
-}
+
+
+
+
 
 body {
     background-color: var(--dark-purple);
@@ -28,10 +29,13 @@ body {
 header {
     text-align: center;
 }
+
 .card {
     margin: 100px auto 0;
     width: 400px;
     height: 600px;
+    perspective: 1000px;
+    background-color: var(--dark-purple);
 }
 
 .card__inner {
@@ -41,10 +45,12 @@ header {
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
+    background-color: var(--dark-purple);
 }
 
 .card__inner.is-flipped {
     transform: rotateY(180deg);
+    background-color: var(--dark-purple);
 }
 
 .card__face {
