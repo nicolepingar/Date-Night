@@ -10,18 +10,20 @@ var gameResult = $(".game-result")
 
 function FormSubmit(event) {
     event.preventDefault();
+    
     var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
     var genre = genreSelect.val();
 
-    if (glassSelection.val("Select dropdown") || mealSelect.val("Select dropdown") || genreSelect.val("Select dropdown")) {
-        alert("Please select from each dropdown menu.")
-        return;
-    }
     selectionValues(glass, meal, genre);
 }
 
 function selectionValues(glass, meal, genre) {
+    // if (glass.val("Select dropdown") || meal.val("Select dropdown") || genre.val("Select dropdown")) {
+    //     // FormSubmit();
+    //     alert("Please select from each dropdown menu.")
+    //     }       
+
     $(".glass-select option:eq(0)").prop("selected", true);
     $(".meal-select option:eq(0)").prop("selected", true);
     $(".genre-select option:eq(0)").prop("selected", true);
@@ -94,6 +96,7 @@ function selectionValues(glass, meal, genre) {
         getDrink(drinkDB);
         getMeal(mealDB);
         getVid(videoGame);
+  
 }
     formSubmitButton.on("click", FormSubmit)
 
