@@ -2,68 +2,23 @@ var videoGameApiKey = "8e16f8ff07d448cca1ccbdac1846964d"
 var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d"
 var glassSelection = $(".glass-select")
 var mealSelect = $(".meal-select")
-var cuisineSelect = $(".cuisine-select")
 var genreSelect = $(".genre-select")
 var formSubmitButton = $(".button")
 var drinkResult = $(".drink-result")
 var mealResult = $(".meal-result")
 var gameResult = $(".game-result")
 
-
-// var mealDB = "https://www.themealdb.com/api/json/v1/1/search.php?f=s"
-// function getMeal(mealDB) {
-//     fetch(mealDB)
-//         .then(function (response) {
-
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             // console.log(data);
-
-//             for (var i = 0; i < data.meals.length; i++) {
-//                 console.log(data.meals[i].strArea);
-//             }
-//         })
-// }
-// getMeal(mealDB);
-
-
-// var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Side"
-// function getMeal(mealDB) {
-//     fetch(mealDB)
-//         .then(function (response) {
-
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//         })
-
-// }
-// getMeal(mealDB);
-
-//     for (var i = 0; i < data.meals.length; i++) {
-//         //console.log(data.meals[i].strArea);
-
-//         if (data.meals[i].strArea === "British" && data.meals[i].strCategory === "Beef") {
-//         console.log(data.meals[i].strMeal);
-//     }
-
-//     }
-// })
-
 function FormSubmit(event) {
     event.preventDefault();
     var glass = glassSelection.val();
     var glass_ = glass.replace(" ", "_");
     var meal = mealSelect.val();
-    var cuisine = cuisineSelect.val();
     var genre = genreSelect.val();
 
-    selectionValues(glass_, meal, cuisine, genre);
+    selectionValues(glass_, meal, genre);
 }
 
-function selectionValues(glass_, meal, cuisine, genre) {
+function selectionValues(glass_, meal, genre) {
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass_
     function getDrink(drinkDB) {
         fetch(drinkDB)
