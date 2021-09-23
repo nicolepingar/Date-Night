@@ -10,16 +10,22 @@ var gameResult = $(".game-result")
 
 function FormSubmit(event) {
     event.preventDefault();
-    var glass = glassSelection.val();
-    var glass_ = glass.replace(" ", "_");
+    var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
     var genre = genreSelect.val();
 
-    selectionValues(glass_, meal, genre);
+    if (glassSelection.val("Select dropdown") || mealSelect.val("Select dropdown") || genreSelect.val("Select dropdown")) {
+        alert("Please select from each dropdown menu.")
+        return;
+    }
+    selectionValues(glass, meal, genre);
 }
 
-function selectionValues(glass_, meal, genre) {
-    var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass_
+function selectionValues(glass, meal, genre) {
+    $(".glass-select option:eq(0)").prop("selected", true);
+    $(".meal-select option:eq(0)").prop("selected", true);
+    $(".genre-select option:eq(0)").prop("selected", true);
+    var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass
     function getDrink(drinkDB) {
         fetch(drinkDB)
             .then(function (response) {
