@@ -54,16 +54,50 @@ var gameResult = $(".game-result")
 
 function FormSubmit(event) {
     event.preventDefault();
+    localStorage.clear();
+
     var glass = glassSelection.val();
     var glass_ = glass.replace(" ", "_");
     var meal = mealSelect.val();
     var cuisine = cuisineSelect.val();
     var genre = genreSelect.val();
+// set values to local storage
+    localStorage.setItem("glassSelectValue", glass_);
+    localStorage.setItem("mealSelectValue", meal);
+    localStorage.setItem("cuisineSelectValue", cuisine);
+    localStorage.setItem("genreSelectValue", genre);
 
-    selectionValues(glass_, meal, cuisine, genre);
+   
+    // glassSelection.on( "change", function() {
+    //     var glass = glassSelection.val(); 
+    //     var glass_ = glass.replace(" ", "_");
+    //     localStorage.setItem("glassSelectValue", glass_);
+    //     return;});
+    
+    // mealSelect.on( "change", function() {
+    //     var meal = mealSelect.val();
+    //     localStorage.setItem("mealSelectValue", meal);
+    //     return;});
+    
+    // cuisineSelect.on( "change", function() {
+    //     var cuisine = cuisineSelect.val();
+    //     localStorage.setItem("cuisineSelectValue", cuisine);
+    //     return;});
+    
+    // genreSelect.on( "change", function() {
+    //     var genre = genreSelect.val();
+    //     localStorage.setItem("genreSelectValue", genre);
+    //     return;});
+
+    
+// removed params for selectionVal because were storing and geting from storage instead
+    selectionValues();
+    return;
 }
 
-function selectionValues(glass_, meal, cuisine, genre) {
+function selectionValues() {
+    // added in local storage get
+    var glass_ = localStorage.getItem("glassSelectValue", glass_);
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass_
     function getDrink(drinkDB) {
         fetch(drinkDB)
@@ -80,9 +114,12 @@ function selectionValues(glass_, meal, cuisine, genre) {
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
                 var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 250 })
                 drinkResult.append(drinkPicEl)
+                return;
             })
     }
 
+     // added in local storage get
+    var meal = localStorage.getItem("mealSelectValue", meal);
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
     function getMeal(mealDB) {
         fetch(mealDB)
@@ -94,6 +131,7 @@ function selectionValues(glass_, meal, cuisine, genre) {
                 var indexMeal = Math.floor(Math.random() * data.meals.length)
                 var mealID = data.meals[indexMeal].idMeal
                 console.log(mealID);
+                return;
             })
 
     }
@@ -101,8 +139,8 @@ function selectionValues(glass_, meal, cuisine, genre) {
 
 
 
-
-
+ // added in local storage get
+    var genre = localStorage.getItem("genreSelectValue", genre);
     var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
     function getVid(videoGame) {
         fetch(videoGame)
@@ -120,6 +158,7 @@ function selectionValues(glass_, meal, cuisine, genre) {
                 var gamePic = data.results[indexGames].background_image;
                 var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 100 })
                 gameResult.append(gamePicEl)
+                return;
 
             })
     }
