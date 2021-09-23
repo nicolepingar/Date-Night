@@ -9,104 +9,48 @@ var drinkResult = $(".drink-result")
 var mealResult = $(".meal-result")
 var gameResult = $(".game-result")
 
-// fetching full games list database
 
-// // make array for genre and for platform options
+// var mealDB = "https://www.themealdb.com/api/json/v1/1/search.php?f=s"
+// function getMeal(mealDB) {
+//     fetch(mealDB)
+//         .then(function (response) {
 
-// // fetch video game Api data by game ID by digits and store in local storage
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             // console.log(data);
 
-// // fetch drink Api data and store in local storage
-
-// // fetch recipe/restaurant api data and store in local storage
-
-// // function to change display properties of cards from hidden to visible 
-
-var mealOptions = [
-    "Beef",
-    "Vegetarian",
-    "Chicken",
-    "Seafood",
-    "Dessert",
-    "Pork",
-    "Pasta",
-]
-
-var cuisineOptions = [
-    "British",
-    "Indian",
-    "American",
-    "Mexican",
-    "French",
-    "Chinese",
-    "Italian",
-    "Dutch",
-]
-
-var mealDB = "https://www.themealdb.com/api/json/v1/1/search.php?f=s"
-function getMeal(mealDB) {
-    fetch(mealDB)
-        .then(function (response) {
-
-            return response.json();
-        })
-        .then(function (data) {
-            // console.log(data);
-
-            for (var i = 0; i < data.meals.length; i++) {
-                console.log(data.meals[i].strArea);
-            }
-        })
-}
-getMeal(mealDB);
-
-var glassOptions = [
-    "Cocktail glass",
-    "Shot glass",
-    "Martini Glass",
-    "Highball Glass",
-    "Collins Glass",
-    "Old-fashioned glass",
-    "Whiskey sour glass",
-    "Champagne Flute",
-    "Margarita glass",
-    "Beer pilsner",
-    "Pint glass",
-    "Coupe Glass",
-    "Beer mug"]
+//             for (var i = 0; i < data.meals.length; i++) {
+//                 console.log(data.meals[i].strArea);
+//             }
+//         })
+// }
+// getMeal(mealDB);
 
 
-var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=g"
-function getDrink(drinkDB) {
-    fetch(drinkDB)
-// Hey nicole, was trying to catch up on what you guys did today. Im seeing the { on the line below is connected to the } that comes above the form submitevent (currently the } is on line 109 for me. Wasnt sure if you intended for the get drink function to include the for loop for "British")
-        .then(function (response) {
+// var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Side"
+// function getMeal(mealDB) {
+//     fetch(mealDB)
+//         .then(function (response) {
 
-var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Side"
-function getMeal(mealDB) {
-    fetch(mealDB)
-        .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data);
+//         })
 
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        })
+// }
+// getMeal(mealDB);
 
-}
+//     for (var i = 0; i < data.meals.length; i++) {
+//         //console.log(data.meals[i].strArea);
 
-getMeal(mealDB);
+//         if (data.meals[i].strArea === "British" && data.meals[i].strCategory === "Beef") {
+//         console.log(data.meals[i].strMeal);
+//     }
 
-
-
-    for (var i = 0; i < data.meals.length; i++) {
-        //console.log(data.meals[i].strArea);
-
-        if (data.meals[i].strArea === "British" && data.meals[i].strCategory === "Beef") {
-        console.log(data.meals[i].strMeal);
-    }
-
-    }
-})
+//     }
+// })
 
 function FormSubmit(event) {
     event.preventDefault();
@@ -134,10 +78,30 @@ function selectionValues(glass_, meal, cuisine, genre) {
                 drinkNameEl.text(drinkName)
                 drinkResult.append(drinkNameEl)
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
-                var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 100 })
+                var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 250 })
                 drinkResult.append(drinkPicEl)
             })
     }
+
+    var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
+    function getMeal(mealDB) {
+        fetch(mealDB)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                var indexMeal = Math.floor(Math.random() * data.meals.length)
+                var mealID = data.meals[indexMeal].idMeal
+                console.log(mealID);
+            })
+
+    }
+    
+
+
+
+
 
     var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
     function getVid(videoGame) {
@@ -160,58 +124,16 @@ function selectionValues(glass_, meal, cuisine, genre) {
             })
     }
     getDrink(drinkDB);
+    getMeal(mealDB);
     getVid(videoGame);
 }
 formSubmitButton.on("click", FormSubmit)
 
 
 
+// card js THIS
+const card = $(".card__container");
 
-var glassOptions = [
-    "Cocktail glass",
-    "Shot glass",
-    "Martini Glass",
-    "Highball Glass",
-    "Collins Glass",
-    "Old-fashioned glass",
-    "Whiskey sour glass",
-    "Champagne Flute",
-    "Margarita glass",
-    "Beer pilsner",
-    "Pint glass",
-    "Coupe Glass",
-    "Beer mug"]
-
-var mealOptions = [
-    "Beef",
-    "Vegetarian",
-    "Chicken",
-    "Seafood",
-    "Dessert",
-    "Pork",
-    "Pasta",
-]
-
-var cuisineOptions = [
-    "British",
-    "Indian",
-    "American",
-    "Mexican",
-    "French",
-    "Chinese",
-    "Italian",
-    "Dutch",
-]
-
-
-
-
-
-// CARD JS BELOW
-
-
-const card = document.querySelector('.card__inner');
-
-card.addEventListener('click', function (){
-    card.classList.toggle('is-flipped');
-})};
+card.on('click', '.card__inner', function (){
+    $(this).toggleClass('is-flipped');
+});
