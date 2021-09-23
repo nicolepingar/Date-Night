@@ -131,10 +131,9 @@ formSubmitButton.on("click", FormSubmit)
 
 
 
+// card js THIS
+const card = $(".card__container");
 
-
-const card = document.querySelector('.card__inner');
-
-card.addEventListener('click', function () {
-    card.classList.toggle('is-flipped');
+card.on('click', '.card__inner', function (){
+    $(this).toggleClass('is-flipped');
 });
