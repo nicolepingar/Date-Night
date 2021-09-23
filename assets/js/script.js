@@ -74,9 +74,7 @@ function selectionValues(glass_, meal, cuisine, genre) {
                 console.log(data);
                 var indexDrink = Math.floor(Math.random() * data.drinks.length)
                 var drinkName = data.drinks[indexDrink].strDrink
-                var drinkNameEl = $("<h4>")
-                drinkNameEl.text(drinkName)
-                drinkResult.append(drinkNameEl)
+              $(".drink-result-name").text(drinkName)
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
                 var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 250 })
                 drinkResult.append(drinkPicEl)
@@ -94,46 +92,55 @@ function selectionValues(glass_, meal, cuisine, genre) {
                 var indexMeal = Math.floor(Math.random() * data.meals.length)
                 var mealID = data.meals[indexMeal].idMeal
                 console.log(mealID);
+                var mealIDUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealID
+                fetch(mealIDUrl) // second fetch for new api
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data);
+                        var mealName = data.meals[0].strMeal
+                        $(".meal-result-name").text(mealName)
+                        $(".meal-recipe").text("Please click the picture for the full recipe.")
+                        var mealPic = data.meals[0].strMealThumb
+                        var recipeLink = data.meals[0].strSource
+                        var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 100 })
+                        $(".a-tag-recipe").attr("href", recipeLink)
+                        $(".a-tag-recipe").attr("target", "_blank")
+                       $(".a-tag-recipe").append(mealPicEl)
+                    })
+
             })
-
-    }
-    
-
-
-
-
-
+        }
     var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
-    function getVid(videoGame) {
-        fetch(videoGame)
-            .then(function (response) {
+        function getVid(videoGame) {
+            fetch(videoGame)
+                .then(function (response) {
 
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-                var indexGames = Math.ceil(Math.random() * 19)
-                var gameName = data.results[indexGames].name;
-                var gameNameEl = $("<h4>")
-                gameNameEl.text(gameName)
-                gameResult.append(gameNameEl)
-                var gamePic = data.results[indexGames].background_image;
-                var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 100 })
-                gameResult.append(gamePicEl)
+                    return response.json();
+                })
+                .then(function (data) {
+                    // console.log(data);
+                    var indexGames = Math.ceil(Math.random() * 19)
+                    var gameName = data.results[indexGames].name;
+                    $(".game-result-name").text(gameName)
+                    var gamePic = data.results[indexGames].background_image;
+                    var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 250 })
+                    gameResult.append(gamePicEl)
 
-            })
-    }
-    getDrink(drinkDB);
-    getMeal(mealDB);
-    getVid(videoGame);
+                })
+        }
+        getDrink(drinkDB);
+        getMeal(mealDB);
+        getVid(videoGame);
 }
-formSubmitButton.on("click", FormSubmit)
+    formSubmitButton.on("click", FormSubmit)
 
 
 
-// card js THIS
-const card = $(".card__container");
+    // card js THIS
+    const card = $(".card__container");
 
-card.on('click', '.card__inner', function (){
-    $(this).toggleClass('is-flipped');
-});
+    card.on('click', '.card__inner', function () {
+        $(this).toggleClass('is-flipped');
+    })
