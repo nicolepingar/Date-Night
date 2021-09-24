@@ -41,12 +41,9 @@ function selectionValues(glass, meal, genre) {
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
                 var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 250 })
                 drinkResult.append(drinkPicEl)
-                return;
             })
     }
 
-     // added in local storage get
-    var meal = localStorage.getItem("mealSelectValue");
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
     function getMeal(mealDB) {
         fetch(mealDB)
