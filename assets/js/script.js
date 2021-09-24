@@ -20,9 +20,9 @@ function FormSubmit(event) {
 
 
 function selectionValues(glass, meal, genre) {
-    $(".glass-select option:eq(0)").prop("selected", true);
-    $(".meal-select option:eq(0)").prop("selected", true);
-    $(".genre-select option:eq(0)").prop("selected", true);
+    // $(".glass-select option:eq(0)").prop("selected", true);
+    // $(".meal-select option:eq(0)").prop("selected", true);
+    // $(".genre-select option:eq(0)").prop("selected", true);
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass
     function getDrink(drinkDB) {
         localStorage.setItem("glassSelectValue", glass);
