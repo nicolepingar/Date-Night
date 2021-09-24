@@ -83,7 +83,7 @@ function selectionValues(glass, meal, genre) {
                     return response.json();
                 })
                 .then(function (data) {
-                    // console.log(data);
+                    console.log(data);
                     var indexGames = Math.ceil(Math.random() * 19)
                     var gameName = data.results[indexGames].name;
                     $(".game-result-name").text(gameName)
