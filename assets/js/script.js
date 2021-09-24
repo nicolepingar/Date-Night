@@ -99,4 +99,8 @@ const card = $(".card__container");
 
 card.on('click', '.card__inner', function () {
     $(this).toggleClass('is-flipped');
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> 0d26603d1ccc860668c937634721f4fd2566f0bc
