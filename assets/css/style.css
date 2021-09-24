@@ -90,7 +90,7 @@ header {
     right: 0;
     bottom: 0;
     z-index: -1;
-    border-radius: 0 0 50% 0;
+    border-radius: 0 0 5% 5%;
     background-image: linear-gradient(to bottom left, var(--dark-purple) 10%, var(--fire-opal) 115%);
 }
 .pp {

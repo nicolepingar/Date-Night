@@ -15,9 +15,9 @@ function FormSubmit(event) {
     selectionValues(glass, meal, genre);
 }
 function selectionValues(glass, meal, genre) {
-    $(".glass-select option:eq(0)").prop("selected", true);
-    $(".meal-select option:eq(0)").prop("selected", true);
-    $(".genre-select option:eq(0)").prop("selected", true);
+    // $(".glass-select option:eq(0)").prop("selected", true);
+    // $(".meal-select option:eq(0)").prop("selected", true);
+    // $(".genre-select option:eq(0)").prop("selected", true);
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass
     function getDrink(drinkDB) {
         localStorage.setItem("glassSelectValue", glass);
@@ -31,9 +31,14 @@ function selectionValues(glass, meal, genre) {
                 var drinkName = data.drinks[indexDrink].strDrink
                 // $(".drink-result-name").text('')
                 $(".drink-result-name").text(drinkName)
-                localStorage.setItem("generatedDrink", drinkName);
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
+<<<<<<< HEAD
                 $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 350, height: 350 })
+=======
+                $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+
+                localStorage.setItem("generatedDrink", drinkName);
+>>>>>>> 2456aaa4fe4b6ed5d778d93f06a8faf5a99fece4
             })
     }
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
@@ -57,7 +62,6 @@ function selectionValues(glass, meal, genre) {
                         console.log(data);
                         var mealName = data.meals[0].strMeal
                         $(".meal-result-name").text(mealName)
-                        localStorage.setItem("generatedMeal", mealName);
                         $(".meal-recipe").text("Please click the picture for the full recipe.")
                         var mealPic = data.meals[0].strMealThumb
                         $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
@@ -65,6 +69,9 @@ function selectionValues(glass, meal, genre) {
                         // var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 150, height: 150 })
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
+
+                        localStorage.setItem("generatedMeal", mealName);
+                        localStorage.setItem("generatedRecipe", recipeLink);
                     })
             })
     }
@@ -80,9 +87,10 @@ function selectionValues(glass, meal, genre) {
                 var indexGames = Math.ceil(Math.random() * 19)
                 var gameName = data.results[indexGames].name;
                 $(".game-result-name").text(gameName)
-                localStorage.setItem("generatedGame", gameName);
                 var gamePic = data.results[indexGames].background_image;
                 $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+
+                localStorage.setItem("generatedGame", gameName);
             })
     }
     getDrink(drinkDB);
@@ -91,6 +99,30 @@ function selectionValues(glass, meal, genre) {
     return;
 }
 formSubmitButton.on("click", FormSubmit)
+<<<<<<< HEAD
+=======
+
+// mail button js
+$('#user-email-input-field').on('change', function() {
+    $('#mail-button').attr('disabled',true);
+    if($(this).val().length != 0)
+        $('#mail-button').attr('disabled', false);            
+    else
+        $('#mail-button').attr('disabled',true);
+        $('#mail-button').on('click', function() {
+            var email = $('#user-email-input-field').val();
+            var subject = "Your Date Night Reccomendations"
+            var body = "Hello from Date Night! Your reccomendations for tonight are: Drink:"
+            + localStorage.getItem("generatedDrink") + ". Meal: "
+            + localStorage.getItem("generatedMeal") + ", find the recipe at:"
+            + localStorage.getItem("generatedRecipe") + ". Game: "
+            + localStorage.getItem("generatedGame") + ". Enjoy!"
+            window.open('mailto:' + email +"?subject=" + subject + "&body=" + body);
+        });    
+});
+
+
+>>>>>>> 2456aaa4fe4b6ed5d778d93f06a8faf5a99fece4
 // card js THIS
 const card = $(".card__container");
 card.on('click', '.card__inner', function () {
