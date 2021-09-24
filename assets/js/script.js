@@ -33,7 +33,7 @@ function selectionValues(glass, meal, genre) {
                 $(".drink-result-name").text(drinkName)
                 localStorage.setItem("generatedDrink", drinkName);
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
-                $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+                $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 350, height: 350 })
             })
     }
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
