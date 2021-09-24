@@ -105,17 +105,24 @@ function selectionValues(glass, meal, genre) {
 formSubmitButton.on("click", FormSubmit)
 
 // mail button js
+$('#user-email-input-field').on('change', function() {
+    $('#mail-button').attr('disabled',true);
+    if($(this).val().length != 0)
+        $('#mail-button').attr('disabled', false);            
+    else
+        $('#mail-button').attr('disabled',true);
+        $('#mail-button').on('click', function() {
+            var email = $('#user-email-input-field').val();
+            var subject = "Your Date Night Reccomendations"
+            var body = "Hello from Date Night! Your reccomendations for tonight are: Drink:"
+            + localStorage.getItem("generatedDrink") + ". Meal: "
+            + localStorage.getItem("generatedMeal") + ", find the recipe at:"
+            + localStorage.getItem("generatedRecipe") + ". Game: "
+            + localStorage.getItem("generatedGame") + ". Enjoy!"
+            window.open('mailto:' + email +"?subject=" + subject + "&body=" + body);
+        });    
+});
 
-$('#mail-button').on('click', function() {
-    var email = $('#user-email-input-field').val();
-    var subject = "Your Date Night Reccomendations"
-    var body = "Hello from Date Night! Your reccomendations for tonight are: Drink:"
-    + localStorage.getItem("generatedDrink") + ". Meal: "
-    + localStorage.getItem("generatedMeal") + ", find the recipe at:"
-    + localStorage.getItem("generatedRecipe") + ". Game: "
-    + localStorage.getItem("generatedGame") + ". Enjoy!"
-    window.open('mailto:' + email +"?subject=" + subject + "&body=" + body);
-})
 
 // card js THIS
 const card = $(".card__container");
