@@ -6,6 +6,7 @@
     --ruby: #D81E5B;
     --papaya-whip: #FDF0D5;
     --cadet: #56666B;
+    --font: sans-serif;
 
 }
 
@@ -138,4 +139,45 @@ header {
     color: var(--dark-purple);
     font-size: 18px;
     line-height: 1.5;
+}
+
+/* trying to fix issue */
+/* 
+.card__header.is-flipped {
+    height: 1%;
+} */
+
+.is-small {
+    max-width: 35.5px;8
+}
+
+.column {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form {
+    text-align: center;
+    height: 350px;
+    width: 400px;
+    padding: 15px;
+    border: var(--papaya-whip) 2.5px solid;
+    border-radius: 15px;
+}
+
+.title.is-3 {
+    font-size: 30px;
+    font-family: var(--font);
+    color: var(--cadet);
+}
+
+header {
+    padding-top: 20px;
+    height: 100px;
+}
+
+.title.is-1 {
+    color: var(--papaya-whip);
+    font-family: var(--font);
+    
 }

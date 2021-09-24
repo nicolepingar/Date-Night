@@ -15,14 +15,12 @@
         <h1 class="title is-1">Date Night</h1>
     </header>
     <main>
-        <div class="columns">
-            <form class="column is-half">
-                <h2 class="title is-2">Form</h2>
+            <form class="form">
                 <div class="field">
                     <label class="label title is-3">Pick a Glass</label>
                     <div class="control">
-                        <div class="select">
-                            <select class="glass-select">
+                        <div class="select is-small">
+                            <select class="button is-outlined is-dark select glass-select">
                                 <option>Select dropdown</option>
                                 <option>Cocktail glass</option>
                                 <option>Shot glass</option>
@@ -42,8 +40,8 @@
                     </div>
                     <label class="label title is-3">Pick a Meal Option</label>
                     <div class="control">
-                        <div class="select">
-                            <select class="meal-select">
+                        <div class="select is-small">
+                            <select class="button is-outlined is-dark select meal-select">
                                 <option>Select dropdown</option>
                                 <option>Beef</option>
                                 <option>Vegetarian</option>
@@ -61,8 +59,8 @@
                     </div>
                     <label class="label title is-3">Pick a Video Game Genre</label>
                     <div class="control">
-                        <div class="select">
-                            <select class="genre-select">
+                        <div class="select is-small">
+                            <select class="button is-outlined is-dark select genre-select">
                                 <option>Select dropdown</option>
                                 <option>Action</option>
                                 <option>Indie</option>
@@ -88,9 +86,9 @@
                     </div>
                     
                 </div>
-                <button type="submit" class="button">Submit</button>
+                <button type="submit" class="button is-outlined is-light">Submit</button>
             </form>
-            <div class="column is-half card__container">
+            <div class="card__container">
                 <!-- nested column container for card's individual "column" -->
                 <div class="columns">
               <!-- drink card -->
@@ -98,7 +96,7 @@
                 <div class="card">
                     <div class="card__inner">
                     <div class="card__face card__face--front">
-                        <h3>Drink</h3>
+                        <h3 class="front-card-title">Drink</h3>
                     </div>
                     <div class="card__face card__face--back">
                         <div class="card__content">
@@ -121,12 +119,12 @@
                 <div class="card">
                     <div class="card__inner">
                     <div class="card__face card__face--front">
-                        <h3>Dinner</h3>
+                        <h3 class="front-card-title">Grub</h3>
                     </div>
                     <div class="card__face card__face--back">
                         <div class="card__content">
                             <div class="card__header">
-                              <img src="./assets/images/drink.png" alt="" class="pp" />
+                              <img src="./assets/images/food.png" alt="" class="pp" />
                               <h3 class="meal-result-name"></h3>  
                             </div>
                             <div class="card__body">
@@ -142,16 +140,16 @@
                 </div>
                 </div>
                 <!-- game card -->
-                <div class="column">
+                <div class="column ">
                 <div class="card">
                     <div class="card__inner">
                     <div class="card__face card__face--front">
-                        <h3>Game</h3>
+                        <h3 class="front-card-title">Game</h3>
                     </div>
                     <div class="card__face card__face--back">
                         <div class="card__content">
                             <div class="card__header">
-                              <img src="./assets/images/drink.png" alt="" class="pp" />
+                              <img src="./assets/images/game.jpg" alt="" class="pp" />
                               <h3 class="game-result-name"></h3>  
                             </div>
                             <div class="card__body">
@@ -166,7 +164,6 @@
             </div>
             </div>
             </div>
-        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="./assets/js/script.js"></script>
