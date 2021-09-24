@@ -107,7 +107,7 @@ formSubmitButton.on("click", FormSubmit)
 // mail button js
 $('#user-email-input-field').on('change', function() {
     $('#mail-button').attr('disabled',true);
-    if($(this).val().length != 0)
+    if($(this).val().length != 0 && $(this).includes("@") && $(this).includes(".com"))
         $('#mail-button').attr('disabled', false);            
     else
         $('#mail-button').attr('disabled',true);
