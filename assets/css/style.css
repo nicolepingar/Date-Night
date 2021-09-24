@@ -175,15 +175,8 @@ header {
 
 /* #gameId, #mealId, #drinkId {
     filter: grayscale(100%);
-} */
-
-/* .drink-pic {
-    width: 400px;
-    height: 400px;
-    object-fit: fill;
-    object-position: 5px 10%;
 }
 
-.drink-result-name {
-    margin-bottom: 50;
-} */
+input:hover {
+    cursor: text;
+}
