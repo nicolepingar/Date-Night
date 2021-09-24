@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Night</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" 6>
 </head>
@@ -15,47 +17,46 @@
         <h1 class="title is-1">Date Night</h1>
     </header>
     <main>
-            <form class="form">
-                <div class="field">
-                    <label class="label title is-3">Pick a Glass</label>
-                    <div class="control">
-                        <div class="select is-small">
-                            <select class="button is-outlined is-dark select glass-select">
-                                <option disabled>Select dropdown</option>
-                                <option>Cocktail glass</option>
-                                <option>Shot glass</option>
-                                <option>Martini Glass</option>
-                                <option>Highball Glass</option>
-                                <option>Collins Glass</option>
-                                <option>Old-fashioned glass</option>
-                                <option>Whiskey sour glass</option>
-                                <option>Champagne Flute</option>
-                                <option>Margarita glass</option>
-                                <option>Beer pilsner</option>
-                                <option>Pint glass</option>
-                                <option>Coupe Glass</option>
-                                <option>Beer mug</option>
-                            </select>
-                        </div>
+        <form class="form">
+            <div class="field">
+                <label class="label title is-3">Pick a Glass</label>
+                <div class="control">
+                    <div class="select is-small">
+                        <select class="button is-outlined is-dark select glass-select">
+                            <option disabled>Select dropdown</option>
+                            <option>Cocktail glass</option>
+                            <option>Shot glass</option>
+                            <option>Martini Glass</option>
+                            <option>Highball Glass</option>
+                            <option>Collins Glass</option>
+                            <option>Old-fashioned glass</option>
+                            <option>Whiskey sour glass</option>
+                            <option>Champagne Flute</option>
+                            <option>Margarita glass</option>
+                            <option>Beer pilsner</option>
+                            <option>Pint glass</option>
+                            <option>Coupe Glass</option>
+                            <option>Beer mug</option>
+                        </select>
                     </div>
-                    <label class="label title is-3">Pick a Meal Option</label>
-                    <div class="control">
-                        <div class="select is-small">
-                            <select class="button is-outlined is-dark select meal-select">
-                                <option disabled>Select dropdown</option>
-                                <option>Beef</option>
-                                <option>Vegetarian</option>
-                                <option>Chicken</option>
-                                <option>Seafood</option>
-                                <option>Dessert</option>
-                                <option>Pork</option>
-                                <option>Pasta</option>
-                                <option>Lamb</option>
-                                <option>Miscellaneous</option>
-                                <option>Vegan</option>
-                                <option>Goat</option>
-                            </select>
-                        </div>
+                </div>
+                <label class="label title is-3">Pick a Meal Option</label>
+                <div class="control">
+                    <div class="select is-small">
+                        <select class="button is-outlined is-dark select meal-select">
+                            <option disabled>Select dropdown</option>
+                            <option>Beef</option>
+                            <option>Vegetarian</option>
+                            <option>Chicken</option>
+                            <option>Seafood</option>
+                            <option>Dessert</option>
+                            <option>Pork</option>
+                            <option>Pasta</option>
+                            <option>Lamb</option>
+                            <option>Miscellaneous</option>
+                            <option>Vegan</option>
+                            <option>Goat</option>
+                        </select>
                     </div>
                     <label class="label title is-3">Pick a Video Game Genre</label>
                     <div class="control">
@@ -83,93 +84,93 @@
                             </select>
                         </div>
                     </div>
-                    
                 </div>
-                <button type="submit" class="submit-button button is-outlined is-light">Show Me My Date Night:</button>
-            </form>
-            <div class="card__container">
-                <!-- nested column container for card's individual "column" -->
-                <div class="columns">
-              <!-- drink card -->
+            </div>
+            <button type="submit" class="submit-button button is-outlined is-light">Show Me My Date Night</button>
+        </form>
+        <div class="card__container">
+            <!-- nested column container for card's individual "column" -->
+            <div class="columns">
+                <!-- drink card -->
                 <div class="column">
-                <div class="card">
-                    <div class="card__inner">
-                    <div class="card__face card__face--front">
-                        <h3 class="front-card-title">Drink</h3>
-                    </div>
-                    <div class="card__face card__face--back">
-                        <div class="card__content">
-                            <div class="card__header">
-                              <img src="./assets/images/drink.png" alt="" class="pp" />
-                              <h3>Sip on a:</h3>  
+                    <div class="card">
+                        <div class="card__inner">
+                            <div class="card__face card__face--front">
+                                <h3 class="front-card-title">Drink</h3>
                             </div>
-                            <div class="card__body">
-                                <h3 class="drink-result-name"></h3>
-                                <img class="drink-pic">
-                                <h4 class="drink-result"></h4>
+                            <div class="card__face card__face--back">
+                                <div class="card__content">
+                                    <div class="card__header">
+                                        <img src="./assets/images/drink.png" alt="" class="pp" />
+                                        <h3>Sip on a:</h3>
+                                        <h3 class="drink-result-name"></h3>
+                                    </div>
+                                    <div class="card__body">
+                                        <img class="drink-pic">
+                                        <h4 class="drink-result"></h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>    
                     </div>
-                </div>
                 </div>
                 <!-- meal card -->
                 <div class="column">
-                <div class="card">
-                    <div class="card__inner">
-                    <div class="card__face card__face--front">
-                        <h3 class="front-card-title">Grub</h3>
-                    </div>
-                    <div class="card__face card__face--back">
-                        <div class="card__content">
-                            <div class="card__header">
-                              <img src="./assets/images/food.png" alt="" class="pp" />
-                              <h3>Whip up some:</h3>  
+                    <div class="card">
+                        <div class="card__inner">
+                            <div class="card__face card__face--front">
+                                <h3 class="front-card-title">Grub</h3>
                             </div>
-                            <div class="card__body">
-                                <h3 class="meal-result-name"></h3>
-                                
-                                <h4 class="meal-result"></h4>
-                                <p class="meal-recipe"></p>
-                                <a class="a-tag-recipe"><img class="meal-pic"></a>
-                                
+                            <div class="card__face card__face--back">
+                                <div class="card__content">
+                                    <div class="card__header">
+                                        <img src="./assets/images/food.png" alt="" class="pp" />
+                                        <h3>Whip up some:</h3>
+                                        <h3 class="meal-result-name"></h3>
+                                    </div>
+                                    <div class="card__body">
 
+                                        <h4 class="meal-result"></h4>
+                                        <p class="meal-recipe"></p>
+                                        <a class="a-tag-recipe"><img class="meal-pic"></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>    
                     </div>
-                </div>
                 </div>
                 <!-- game card -->
                 <div class="column ">
-                <div class="card">
-                    <div class="card__inner">
-                    <div class="card__face card__face--front">
-                        <h3 class="front-card-title">Game</h3>
-                    </div>
-                    <div class="card__face card__face--back">
-                        <div class="card__content">
-                            <div class="card__header">
-                              <img src="./assets/images/game.jpg" alt="" class="pp" />
-                              <h3>Let's play:</h3>  
+                    <div class="card">
+                        <div class="card__inner">
+                            <div class="card__face card__face--front">
+                                <h3 class="front-card-title">Game</h3>
                             </div>
-                            <div class="card__body">
-                                <h3 class="game-result-name"></h3>
-                                <img class="game-pic">
-                                <h4 class="game-result"></h4>
-                                <p></p>
+                            <div class="card__face card__face--back">
+                                <div class="card__content">
+                                    <div class="card__header">
+                                        <img src="./assets/images/game.jpg" alt="" class="pp" />
+                                        <h3>Let's play:</h3>
+                                        <h3 class="game-result-name"></h3>
+                                    </div>
+                                    <div class="card__body">
 
+                                        <img class="game-pic">
+                                        <h4 class="game-result"></h4>
+                                        <p></p>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>    
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
-            <!-- email added sections -->
-            <button class="button is-outlined is-light" id="mail-button">Mail me my results</button>
-            <input class="button is-outlined is-light" id="user-email-input-field">
+        </div>
+        </div>
+        <!-- email added sections -->
+        <button class="button is-outlined is-light" id="mail-button">Mail me my results</button>
+        <input class="button is-outlined is-light" id="user-email-input-field">
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="./assets/js/script.js"></script>
