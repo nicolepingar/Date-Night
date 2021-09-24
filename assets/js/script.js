@@ -3,7 +3,7 @@ var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac18469
 var glassSelection = $(".glass-select")
 var mealSelect = $(".meal-select")
 var genreSelect = $(".genre-select")
-var formSubmitButton = $(".button")
+var formSubmitButton = $(".submit-button")
 var drinkResult = $(".drink-result")
 var mealResult = $(".meal-result")
 var gameResult = $(".game-result")
