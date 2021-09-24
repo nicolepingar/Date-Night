@@ -8,12 +8,11 @@ var drinkResult = $(".drink-result")
 var mealResult = $(".meal-result")
 var gameResult = $(".game-result")
 
-
 function FormSubmit(event) {
     event.preventDefault();
     var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
-    var genre = genreSelect.val();
+    var genre = genreSelect.val().replace(" ", "-");
     selectionValues(glass, meal, genre);
 }
 
@@ -66,14 +65,12 @@ function selectionValues(glass, meal, genre) {
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
                     })
-
             })
     }
     var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
     function getVid(videoGame) {
         fetch(videoGame)
             .then(function (response) {
-
                 return response.json();
             })
             .then(function (data) {
@@ -88,7 +85,6 @@ function selectionValues(glass, meal, genre) {
     getDrink(drinkDB);
     getMeal(mealDB);
     getVid(videoGame);
-
 }
 formSubmitButton.on("click", FormSubmit)
 
