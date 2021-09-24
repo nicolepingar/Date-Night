@@ -14,7 +14,7 @@ function FormSubmit(event) {
     var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
     var genre = genreSelect.val();
-
+    
     selectionValues(glass, meal, genre);
 }
 
@@ -39,7 +39,7 @@ function selectionValues(glass, meal, genre) {
                 var drinkName = data.drinks[indexDrink].strDrink
               $(".drink-result-name").text(drinkName)
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
-                var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 250 })
+                var drinkPicEl = $("<img>", { src: drinkPic, id: "drinkId", width: 150, height: 150 })
                 drinkResult.append(drinkPicEl)
             })
     }
@@ -67,7 +67,7 @@ function selectionValues(glass, meal, genre) {
                         $(".meal-recipe").text("Please click the picture for the full recipe.")
                         var mealPic = data.meals[0].strMealThumb
                         var recipeLink = data.meals[0].strSource
-                        var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 100 })
+                        var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 150, height: 150 })
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
                        $(".a-tag-recipe").append(mealPicEl)
@@ -83,12 +83,12 @@ function selectionValues(glass, meal, genre) {
                     return response.json();
                 })
                 .then(function (data) {
-                    // console.log(data);
+                    console.log(data);
                     var indexGames = Math.ceil(Math.random() * 19)
                     var gameName = data.results[indexGames].name;
                     $(".game-result-name").text(gameName)
                     var gamePic = data.results[indexGames].background_image;
-                    var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 250 })
+                    var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 150, height: 150 })
                     gameResult.append(gamePicEl)
 
                 })
