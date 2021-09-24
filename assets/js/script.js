@@ -7,6 +7,7 @@ var formSubmitButton = $(".submit-button")
 var drinkResult = $(".drink-result")
 var mealResult = $(".meal-result")
 var gameResult = $(".game-result")
+
 function FormSubmit(event) {
     event.preventDefault();
     var glass = glassSelection.val().replace(" ", "_");
@@ -32,13 +33,9 @@ function selectionValues(glass, meal, genre) {
                 // $(".drink-result-name").text('')
                 $(".drink-result-name").text(drinkName)
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
-<<<<<<< HEAD
-                $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 350, height: 350 })
-=======
                 $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
 
                 localStorage.setItem("generatedDrink", drinkName);
->>>>>>> 2456aaa4fe4b6ed5d778d93f06a8faf5a99fece4
             })
     }
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
@@ -99,8 +96,6 @@ function selectionValues(glass, meal, genre) {
     return;
 }
 formSubmitButton.on("click", FormSubmit)
-<<<<<<< HEAD
-=======
 
 // mail button js
 $('#user-email-input-field').on('change', function() {
@@ -122,7 +117,6 @@ $('#user-email-input-field').on('change', function() {
 });
 
 
->>>>>>> 2456aaa4fe4b6ed5d778d93f06a8faf5a99fece4
 // card js THIS
 const card = $(".card__container");
 card.on('click', '.card__inner', function () {
