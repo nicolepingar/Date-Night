@@ -14,6 +14,7 @@ function FormSubmit(event) {
     var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
     var genre = genreSelect.val();
+    
     selectionValues(glass, meal, genre);
 }
 
