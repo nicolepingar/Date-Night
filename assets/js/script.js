@@ -7,18 +7,13 @@ var formSubmitButton = $(".submit-button")
 var drinkResult = $(".drink-result")
 var mealResult = $(".meal-result")
 var gameResult = $(".game-result")
-
-
 function FormSubmit(event) {
     event.preventDefault();
     var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
     var genre = genreSelect.val().replace(" ", "-");
-
     selectionValues(glass, meal, genre);
 }
-
-
 function selectionValues(glass, meal, genre) {
     $(".glass-select option:eq(0)").prop("selected", true);
     $(".meal-select option:eq(0)").prop("selected", true);
@@ -65,13 +60,12 @@ function selectionValues(glass, meal, genre) {
                         localStorage.setItem("generatedMeal", mealName);
                         $(".meal-recipe").text("Please click the picture for the full recipe.")
                         var mealPic = data.meals[0].strMealThumb
+                        $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
                         var recipeLink = data.meals[0].strSource
-                        var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 150, height: 150 })
+                        // var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 150, height: 150 })
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
-                        $(".a-tag-recipe").append(mealPicEl)
                     })
-
             })
     }
     var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
@@ -79,7 +73,6 @@ function selectionValues(glass, meal, genre) {
         localStorage.setItem("genreSelectValue", genre);
         fetch(videoGame)
             .then(function (response) {
-
                 return response.json();
             })
             .then(function (data) {
@@ -89,22 +82,17 @@ function selectionValues(glass, meal, genre) {
                 $(".game-result-name").text(gameName)
                 localStorage.setItem("generatedGame", gameName);
                 var gamePic = data.results[indexGames].background_image;
-                var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 150, height: 150 })
-                gameResult.append(gamePicEl)
-
+                $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
             })
     }
     getDrink(drinkDB);
     getMeal(mealDB);
     getVid(videoGame);
     return;
-
 }
 formSubmitButton.on("click", FormSubmit)
-
 // card js THIS
 const card = $(".card__container");
-
 card.on('click', '.card__inner', function () {
     $(this).toggleClass('is-flipped');
 })
