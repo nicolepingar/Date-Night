@@ -19,8 +19,11 @@ function FormSubmit(event) {
 // function passes through all the dropbox values and creates card values 
 function selectionValues(glass, meal, genre) {
     formSubmitButton.text("Reroll") // when form is submitted, button text changes to reroll with dice
-    var dice =$("<i>").addClass("fas fa-dice")
+    var dice = $("<i>").addClass("fas fa-dice")
     formSubmitButton.append(dice)
+    // $(".glass-select option:eq(0)").prop("selected", true);
+    // $(".meal-select option:eq(0)").prop("selected", true);
+    // $(".genre-select option:eq(0)").prop("selected", true);
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass
     function getDrink(drinkDB) {
         localStorage.setItem("glassSelectValue", glass); // sets drink input values to local storage 
@@ -28,7 +31,7 @@ function selectionValues(glass, meal, genre) {
             .then(function (response) {
                 return response.json();
             })
-            .then(function (data) { 
+            .then(function (data) {
                 // var drinkID = data.drinks[indexDrink].idDrink
                 // var drinkIDUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID
                 // fetch(drinkIDUrl)
@@ -44,6 +47,8 @@ function selectionValues(glass, meal, genre) {
                 localStorage.setItem("generatedDrink", drinkName); // sets drink name to local storage 
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
                 $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+
+                localStorage.setItem("generatedDrink", drinkName);
             })
     }
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
@@ -73,6 +78,9 @@ function selectionValues(glass, meal, genre) {
                         var recipeLink = data.meals[0].strSource
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
+
+                        localStorage.setItem("generatedMeal", mealName);
+                        localStorage.setItem("generatedRecipe", recipeLink);
                     })
             })
     }
@@ -91,6 +99,8 @@ function selectionValues(glass, meal, genre) {
                 localStorage.setItem("generatedGame", gameName); // sets game name to local storage 
                 var gamePic = data.results[indexGames].background_image;
                 $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+
+                localStorage.setItem("generatedGame", gameName);
             })
     }
     // calls each function on click of form submit 
@@ -100,6 +110,24 @@ function selectionValues(glass, meal, genre) {
     return;
 }
 formSubmitButton.on("click", FormSubmit)
+// allows the user to email their results to themselves
+$('#user-email-input-field').on('change', function () {
+    $('#mail-button').attr('disabled', true);
+    if ($(this).val().length != 0 && $(this).includes("@") && $(this).includes(".com"))
+        $('#mail-button').attr('disabled', false);
+    else
+        $('#mail-button').attr('disabled', true);
+    $('#mail-button').on('click', function () {
+        var email = $('#user-email-input-field').val();
+        var subject = "Your Date Night Reccomendations"
+        var body = "Hello from Date Night! Your reccomendations for tonight are: Drink:"
+            + localStorage.getItem("generatedDrink") + ". Meal: "
+            + localStorage.getItem("generatedMeal") + ", find the recipe at:"
+            + localStorage.getItem("generatedRecipe") + ". Game: "
+            + localStorage.getItem("generatedGame") + ". Enjoy!"
+        window.open('mailto:' + email + "?subject=" + subject + "&body=" + body);
+    });
+});
 // card flip function 
 const card = $(".card__container");
 card.on('click', '.card__inner', function () {
