@@ -13,9 +13,11 @@ function FormSubmit(event) {
     event.preventDefault();
     var glass = glassSelection.val().replace(" ", "_");
     var meal = mealSelect.val();
-    var genre = genreSelect.val();
+    var genre = genreSelect.val().replace(" ", "-");
+
     selectionValues(glass, meal, genre);
 }
+
 
 function selectionValues(glass, meal, genre) {
     $(".glass-select option:eq(0)").prop("selected", true);
@@ -23,6 +25,7 @@ function selectionValues(glass, meal, genre) {
     $(".genre-select option:eq(0)").prop("selected", true);
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass
     function getDrink(drinkDB) {
+        localStorage.setItem("glassSelectValue", glass);
         fetch(drinkDB)
             .then(function (response) {
                 return response.json();
@@ -33,13 +36,14 @@ function selectionValues(glass, meal, genre) {
                 var drinkName = data.drinks[indexDrink].strDrink
                 // $(".drink-result-name").text('')
                 $(".drink-result-name").text(drinkName)
+                localStorage.setItem("generatedDrink", drinkName);
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
                 $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
             })
     }
-
     var mealDB = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal
     function getMeal(mealDB) {
+        localStorage.setItem("mealSelectValue", meal);
         fetch(mealDB)
             .then(function (response) {
                 return response.json();
@@ -58,6 +62,7 @@ function selectionValues(glass, meal, genre) {
                         console.log(data);
                         var mealName = data.meals[0].strMeal
                         $(".meal-result-name").text(mealName)
+                        localStorage.setItem("generatedMeal", mealName);
                         $(".meal-recipe").text("Please click the picture for the full recipe.")
                         var mealPic = data.meals[0].strMealThumb
                         var recipeLink = data.meals[0].strSource
@@ -71,6 +76,7 @@ function selectionValues(glass, meal, genre) {
     }
     var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d&genres=" + genre.toLowerCase();
     function getVid(videoGame) {
+        localStorage.setItem("genreSelectValue", genre);
         fetch(videoGame)
             .then(function (response) {
 
@@ -81,6 +87,7 @@ function selectionValues(glass, meal, genre) {
                 var indexGames = Math.ceil(Math.random() * 19)
                 var gameName = data.results[indexGames].name;
                 $(".game-result-name").text(gameName)
+                localStorage.setItem("generatedGame", gameName);
                 var gamePic = data.results[indexGames].background_image;
                 var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 150, height: 150 })
                 gameResult.append(gamePicEl)
@@ -90,6 +97,7 @@ function selectionValues(glass, meal, genre) {
     getDrink(drinkDB);
     getMeal(mealDB);
     getVid(videoGame);
+    return;
 
 }
 formSubmitButton.on("click", FormSubmit)
