@@ -60,11 +60,11 @@ function selectionValues(glass, meal, genre) {
                         $(".meal-result-name").text(mealName)
                         $(".meal-recipe").text("Please click the picture for the full recipe.")
                         var mealPic = data.meals[0].strMealThumb
-                        $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
                         var recipeLink = data.meals[0].strSource
-                        // var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 150, height: 150 })
+                        var mealPicEl = $("<img>", { src: mealPic, id: "mealId", width: 150, height: 150 })
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
+                        $(".a-tag-recipe").append(mealPicEl)
                     })
 
             })
@@ -82,7 +82,9 @@ function selectionValues(glass, meal, genre) {
                 var gameName = data.results[indexGames].name;
                 $(".game-result-name").text(gameName)
                 var gamePic = data.results[indexGames].background_image;
-                $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+                var gamePicEl = $("<img>", { src: gamePic, id: "gameId", width: 150, height: 150 })
+                gameResult.append(gamePicEl)
+
             })
     }
     getDrink(drinkDB);
@@ -97,8 +99,4 @@ const card = $(".card__container");
 
 card.on('click', '.card__inner', function () {
     $(this).toggleClass('is-flipped');
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> 0d26603d1ccc860668c937634721f4fd2566f0bc
