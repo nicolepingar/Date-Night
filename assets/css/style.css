@@ -37,6 +37,7 @@ header {
     perspective: 1000px;
     border-radius: 16px;
     background-color: inherit;
+    box-shadow: none;
     
 }
 .card__inner {
@@ -161,13 +162,15 @@ form {
     height: 350px;
     width: 400px;
     padding: 15px;
-    border: var(--papaya-whip) 2.5px solid;
-    border-radius: 15px;
+    /* border: var(--papaya-whip) 2.5px solid;
+    border-radius: 15px; */
 }
 .title.is-3 {
     font-size: 30px;
     font-family: var(--font);
-    color: var(--cadet);
+    background: -webkit-linear-gradient(left, var(--light-violet), var(--pinkish-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 header {
     padding-top: 20px;

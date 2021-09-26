@@ -10,6 +10,8 @@ function FormSubmit(event) {
     var meal = mealSelect.val();
     var genre = genreSelect.val().replace(" ", "-"); // spaces are replaced with a dash because api url format
     selectionValues(glass, meal, genre);
+    glow();
+    glowOnSubmitAnimation();
 }
 // function passes through all the dropbox values and creates card values 
 function selectionValues(glass, meal, genre) {
@@ -51,7 +53,6 @@ function selectionValues(glass, meal, genre) {
                         return response.json();
                     })
                     .then(function (data) {
-                        console.log(data);
                         var mealName = data.meals[0].strMeal
                         $(".meal-result-name").text(mealName)
                         localStorage.setItem("generatedMeal", mealName); // sets meal name to local storage 
@@ -116,3 +117,35 @@ const card = $(".card__container");
 card.on('click', '.card__inner', function () {
     $(this).toggleClass('is-flipped');
 })
+
+// glow animation
+
+function glowOnSubmitAnimation() {
+let start = Date.now(); // remember start time
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed >= 2000) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    stopGlow();
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+
+
+}, 1000);
+}
+// as timePassed goes from 0 to 2000
+// left gets values from 0px to 400px
+function glow() {
+  $(".card__face--front").css('box-shadow', ' 0 10px 35px #8B76C2');
+  $(".card__face--front").css('transition', ' box-shadow 2s ease-in-out')
+
+}
+
+function stopGlow() {
+    $(".card__face--front").css('box-shadow', '0px 0px 0px #888')
+}
