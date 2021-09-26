@@ -1,13 +1,8 @@
 // global variables 
-var videoGameApiKey = "8e16f8ff07d448cca1ccbdac1846964d"
-var videoGame = "https://api.rawg.io/api/games?key=8e16f8ff07d448cca1ccbdac1846964d"
 var glassSelection = $(".glass-select")
 var mealSelect = $(".meal-select")
 var genreSelect = $(".genre-select")
 var formSubmitButton = $(".submit-button")
-var drinkResult = $(".drink-result")
-var mealResult = $(".meal-result")
-var gameResult = $(".game-result")
 // when the form is submitted, the values are set as params in sectionValues function 
 function FormSubmit(event) {
     event.preventDefault();
@@ -21,33 +16,21 @@ function selectionValues(glass, meal, genre) {
     formSubmitButton.text("Reroll") // when form is submitted, button text changes to reroll with dice
     var dice = $("<i>").addClass("fas fa-dice")
     formSubmitButton.append(dice)
-    // $(".glass-select option:eq(0)").prop("selected", true);
-    // $(".meal-select option:eq(0)").prop("selected", true);
-    // $(".genre-select option:eq(0)").prop("selected", true);
     var drinkDB = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=" + glass
     function getDrink(drinkDB) {
         localStorage.setItem("glassSelectValue", glass); // sets drink input values to local storage 
+        // random drink name and picture generation function 
         fetch(drinkDB)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
-                // var drinkID = data.drinks[indexDrink].idDrink
-                // var drinkIDUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID
-                // fetch(drinkIDUrl)
-                // .then(function (response) {
-                //     return response.json();
-                // })
-                // .then(function (data) {
-                //     console.log(data);
-                // random drink name and picture generation function 
                 var indexDrink = Math.floor(Math.random() * data.drinks.length) // random number based on number of drinks in data 
                 var drinkName = data.drinks[indexDrink].strDrink
                 $(".drink-result-name").text(drinkName)
                 localStorage.setItem("generatedDrink", drinkName); // sets drink name to local storage 
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
                 $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
-
                 localStorage.setItem("generatedDrink", drinkName);
             })
     }
