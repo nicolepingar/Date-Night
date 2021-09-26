@@ -12,7 +12,8 @@
     --dark-black: #0D0D0D;
     --pinkish-red: #730237;
     --light-violet: #8B76C2;
-    --font: sans-serif;
+    --white: #fff;
+    --font:'Josefin Sans', sans-serif;;
 
 }
 
@@ -22,7 +23,7 @@
 }
 body {
     background-image: linear-gradient(to bottom right, var(--dark-black), var(--dark-purple));
-    font-family: sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     width: 100%;
     min-height: 100vh;
 }
@@ -140,11 +141,17 @@ header {
     text-align: center;
 }
 
-#meal-pic > img {
+.card__body img {
     display: block;
     margin: 0 auto;
 }
 
+.meal-pic, .drink-pic, .game-pic {
+     background-size: cover;
+     width: 200px;
+     height: 175px;
+     border-radius: 15px;
+ }
 /* trying to fix issue */
 /* 
 .card__header.is-flipped {
@@ -166,9 +173,10 @@ form {
     border-radius: 15px; */
 }
 .title.is-3 {
+    margin-top: 15px;
     font-size: 30px;
     font-family: var(--font);
-    background: -webkit-linear-gradient(left, var(--light-violet), var(--pinkish-red));
+    background: -webkit-linear-gradient(left, var(--dark-purple), var(--white));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

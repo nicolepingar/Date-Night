@@ -32,7 +32,8 @@ function selectionValues(glass, meal, genre) {
                 $(".drink-result-name").text(drinkName)
                 localStorage.setItem("generatedDrink", drinkName); // sets drink name to local storage 
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
-                $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+                // $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+                $(".drink-pic").css('background-image', 'url(' + drinkPic + ')');
                 localStorage.setItem("generatedDrink", drinkName);
             })
     }
@@ -58,7 +59,8 @@ function selectionValues(glass, meal, genre) {
                         localStorage.setItem("generatedMeal", mealName); // sets meal name to local storage 
                         $(".meal-recipe").text("Please click the picture for the full recipe.") // recipe url is linked in picture
                         var mealPic = data.meals[0].strMealThumb
-                        $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
+                        // $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
+                        $(".meal-pic").css('background-image', 'url(' + mealPic + ')');
                         var recipeLink = data.meals[0].strSource
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
@@ -82,12 +84,16 @@ function selectionValues(glass, meal, genre) {
                 $(".game-result-name").text(gameName)
                 localStorage.setItem("generatedGame", gameName); // sets game name to local storage 
                 var gamePic = data.results[indexGames].background_image;
-                $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+                // $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+                console.log(gamePic);
+                $(".game-pic").css('background-image', 'url(' + gamePic + ')');
 
                 localStorage.setItem("generatedGame", gameName);
             })
     }
     // calls each function on click of form submit 
+// save checkpoint for images
+
     getDrink(drinkDB);
     getMeal(mealDB);
     getVid(videoGame);
