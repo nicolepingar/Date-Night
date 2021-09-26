@@ -10,6 +10,8 @@ function FormSubmit(event) {
     var meal = mealSelect.val();
     var genre = genreSelect.val().replace(" ", "-"); // spaces are replaced with a dash because api url format
     selectionValues(glass, meal, genre);
+    glow();
+    glowOnSubmitAnimation();
 }
 // function passes through all the dropbox values and creates card values 
 function selectionValues(glass, meal, genre) {
@@ -30,7 +32,8 @@ function selectionValues(glass, meal, genre) {
                 $(".drink-result-name").text(drinkName)
                 localStorage.setItem("generatedDrink", drinkName); // sets drink name to local storage 
                 var drinkPic = data.drinks[indexDrink].strDrinkThumb
-                $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+                // $(".drink-pic").attr({ src: drinkPic, id: "drinkId", width: 150, height: 150 })
+                $(".drink-pic").css('background-image', 'url(' + drinkPic + ')');
                 localStorage.setItem("generatedDrink", drinkName);
             })
     }
@@ -51,13 +54,13 @@ function selectionValues(glass, meal, genre) {
                         return response.json();
                     })
                     .then(function (data) {
-                        console.log(data);
                         var mealName = data.meals[0].strMeal
                         $(".meal-result-name").text(mealName)
                         localStorage.setItem("generatedMeal", mealName); // sets meal name to local storage 
                         $(".meal-recipe").text("Please click the picture for the full recipe.") // recipe url is linked in picture
                         var mealPic = data.meals[0].strMealThumb
-                        $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
+                        // $(".meal-pic").attr({ src: mealPic, id: "mealId", width: 150, height: 150 })
+                        $(".meal-pic").css('background-image', 'url(' + mealPic + ')');
                         var recipeLink = data.meals[0].strSource
                         $(".a-tag-recipe").attr("href", recipeLink)
                         $(".a-tag-recipe").attr("target", "_blank")
@@ -81,12 +84,16 @@ function selectionValues(glass, meal, genre) {
                 $(".game-result-name").text(gameName)
                 localStorage.setItem("generatedGame", gameName); // sets game name to local storage 
                 var gamePic = data.results[indexGames].background_image;
-                $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+                // $(".game-pic").attr({ src: gamePic, id: "gameId", width: 150, height: 150 })
+                console.log(gamePic);
+                $(".game-pic").css('background-image', 'url(' + gamePic + ')');
 
                 localStorage.setItem("generatedGame", gameName);
             })
     }
     // calls each function on click of form submit 
+// save checkpoint for images
+
     getDrink(drinkDB);
     getMeal(mealDB);
     getVid(videoGame);
@@ -96,7 +103,7 @@ formSubmitButton.on("click", FormSubmit)
 // allows the user to email their results to themselves
 $('#user-email-input-field').on('change', function () {
     $('#mail-button').attr('disabled', true);
-    if ($(this).val().length != 0 && $(this).includes("@") && $(this).includes(".com"))
+    if ($(this).val().length != 0 && $(this).val().includes("@") && $(this).val().includes(".com"))
         $('#mail-button').attr('disabled', false);
     else
         $('#mail-button').attr('disabled', true);
@@ -116,3 +123,35 @@ const card = $(".card__container");
 card.on('click', '.card__inner', function () {
     $(this).toggleClass('is-flipped');
 })
+
+// glow animation
+
+function glowOnSubmitAnimation() {
+let start = Date.now(); // remember start time
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed >= 2000) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    stopGlow();
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+
+
+}, 1000);
+}
+// as timePassed goes from 0 to 2000
+// left gets values from 0px to 400px
+function glow() {
+  $(".card__face--front").css('box-shadow', ' 0 10px 35px #8B76C2');
+  $(".card__face--front").css('transition', ' box-shadow 2s ease-in-out')
+
+}
+
+function stopGlow() {
+    $(".card__face--front").css('box-shadow', '0px 0px 0px #888')
+}

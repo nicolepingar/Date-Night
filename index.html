@@ -8,6 +8,9 @@
     <title>Date Night</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" 6>
@@ -15,7 +18,7 @@
 
 <body>
     <header>
-        <h1 class="title is-1">Date Night</h1>
+        <h1 class="title is-1">D<i class="fas fa-pizza-slice fs-sm"></i>te N<i class="fas fa-glass-martini-alt"></i>ght</h1>
     </header>
     <main>
         <form class="form container is-medium">
@@ -91,9 +94,9 @@
         </form>
         <div class="card__container">
             <!-- nested column container for card's individual "column" -->
-            <div class="columns">
+            <div class="columns is-full">
                 <!-- drink card -->
-                <div class="column">
+                <div class="column is-one-third">
                     <div class="card">
                         <div class="card__inner">
                             <div class="card__face card__face--front">
@@ -116,7 +119,7 @@
                     </div>
                 </div>
                 <!-- meal card -->
-                <div class="column">
+                <div class="column is-one-third">
                     <div class="card">
                         <div class="card__inner">
                             <div class="card__face card__face--front">
@@ -138,9 +141,10 @@
                             </div>
                         </div>
                     </div>
+                    <!-- again repo missing 2 closing divs before next column -->
                 </div>
                 <!-- game card -->
-                <div class="column ">
+                <div class="column is-one-third ">
                     <div class="card">
                         <div class="card__inner">
                             <div class="card__face card__face--front">

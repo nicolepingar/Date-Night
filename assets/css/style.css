@@ -12,7 +12,8 @@
     --dark-black: #0D0D0D;
     --pinkish-red: #730237;
     --light-violet: #8B76C2;
-    --font: sans-serif;
+    --white: #fff;
+    --font:'Josefin Sans', sans-serif;;
 
 }
 
@@ -21,20 +22,24 @@
     padding: 0;
 }
 body {
-    background-color: var(--dark-purple);
-    font-family: sans-serif;
+    background-image: linear-gradient(to bottom right, var(--dark-black), var(--dark-purple));
+    font-family: 'Josefin Sans', sans-serif;
     width: 100%;
     min-height: 100vh;
 }
 header {
     text-align: center;
 }
+
 .card {
     margin: 100px auto 0;
     width: 400px;
     height: 600px;
     perspective: 1000px;
-    background-color: var(--dark-purple);
+    border-radius: 16px;
+    background-color: inherit;
+    box-shadow: none;
+    
 }
 .card__inner {
     width: 100%;
@@ -43,11 +48,12 @@ header {
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
-    background-color: var(--dark-purple);
+    border-radius: 16px;
+    
 }
 .card__inner.is-flipped {
     transform: rotateY(180deg);
-    background-color: var(--dark-purple);
+    
 }
 .card__face {
     position: absolute;
@@ -60,7 +66,7 @@ header {
     box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
 .card__face--front {
-    background-image: linear-gradient(to bottom right, var(--dark-purple), var(--fire-opal));
+    background-image: linear-gradient(to bottom right, var(--pinkish-red), var(--dark-black));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +76,7 @@ header {
     font-size: 32px;
 }
 .card__face--back {
-    background-color: var(--papaya-whip);
+    background-image: linear-gradient(to bottom right, var(--pinkish-red), var(--dark-black));
     transform: rotateY(180deg);
 }
 .card__content {
@@ -91,7 +97,7 @@ header {
     bottom: 0;
     z-index: -1;
     border-radius: 0 0 5% 5%;
-    background-image: linear-gradient(to bottom left, var(--dark-purple) 10%, var(--fire-opal) 115%);
+    background-image: inherit;
 }
 .pp {
     display: block;
@@ -129,10 +135,23 @@ header {
     margin-bottom: 15px;
 }
 .card__body p {
-    color: var(--dark-purple);
+    color: white;
     font-size: 18px;
     line-height: 1.5;
+    text-align: center;
 }
+
+.card__body img {
+    display: block;
+    margin: 0 auto;
+}
+
+.meal-pic, .drink-pic, .game-pic {
+     background-size: cover;
+     width: 200px;
+     height: 175px;
+     border-radius: 15px;
+ }
 /* trying to fix issue */
 /* 
 .card__header.is-flipped {
@@ -150,13 +169,16 @@ form {
     height: 350px;
     width: 400px;
     padding: 15px;
-    border: var(--papaya-whip) 2.5px solid;
-    border-radius: 15px;
+    /* border: var(--papaya-whip) 2.5px solid;
+    border-radius: 15px; */
 }
 .title.is-3 {
+    margin-top: 15px;
     font-size: 30px;
     font-family: var(--font);
-    color: var(--cadet);
+    background: -webkit-linear-gradient(left, var(--dark-purple), var(--white));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 header {
     padding-top: 20px;
@@ -182,7 +204,7 @@ header {
 
 /* #gameId, #mealId, #drinkId {
     filter: grayscale(100%);
-}
+} */
 
 input:hover {
     cursor: text;
