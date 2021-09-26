@@ -171,6 +171,10 @@ header {
     box-shadow: 0 25px 45px rgba(145, 92, 182, .4);
   }
 
+  .ui-tooltip {
+    white-space: pre-line;
+}
+
 /* commenting out grayscale for now */
 
 /* #gameId, #mealId, #drinkId {
