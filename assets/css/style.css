@@ -14,10 +14,8 @@
     --light-violet: #8B76C2;
     --white: #fff;
     --font:'Josefin Sans', sans-serif;;
-
 }
-
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -30,7 +28,6 @@ body {
 header {
     text-align: center;
 }
-
 .card {
     margin: 100px auto 0;
     width: 400px;
@@ -38,8 +35,7 @@ header {
     perspective: 1000px;
     border-radius: 16px;
     background-color: inherit;
-    box-shadow: none;
-    
+    box-shadow: none;  
 }
 .card__inner {
     width: 100%;
@@ -48,12 +44,10 @@ header {
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
-    border-radius: 16px;
-    
+    border-radius: 16px;   
 }
 .card__inner.is-flipped {
-    transform: rotateY(180deg);
-    
+    transform: rotateY(180deg);    
 }
 .card__face {
     position: absolute;
@@ -116,7 +110,6 @@ header {
     text-transform: uppercase;
     text-align: center;
 }
-
 .card__header h4 {
     color: white;
     font-size: 20px;
@@ -124,7 +117,6 @@ header {
     text-transform: uppercase;
     text-align: center;
 }
-
 .card__body {
     padding: 30px;
 }
@@ -140,23 +132,16 @@ header {
     line-height: 1.5;
     text-align: center;
 }
-
 .card__body img {
     display: block;
     margin: 0 auto;
 }
-
 .meal-pic, .drink-pic, .game-pic {
      background-size: cover;
      width: 200px;
      height: 175px;
      border-radius: 15px;
  }
-/* trying to fix issue */
-/* 
-.card__header.is-flipped {
-    height: 1%;
-} */
 .is-small {
     max-width: 35.5px;
 }
@@ -169,8 +154,6 @@ form {
     height: 350px;
     width: 400px;
     padding: 15px;
-    /* border: var(--papaya-whip) 2.5px solid;
-    border-radius: 15px; */
 }
 .title.is-3 {
     margin-top: 15px;
@@ -192,20 +175,12 @@ header {
     color: rgba(255, 255, 255, 1);
     box-shadow: 0 25px 45px rgba(145, 92, 182, .4);
   }
-
   .ui-tooltip {
     white-space: pre-line;
 }
-
 .tile {
     align-items: center;
 }
-/* commenting out grayscale for now */
-
-/* #gameId, #mealId, #drinkId {
-    filter: grayscale(100%);
-} */
-
 input:hover {
     cursor: text;
 }
