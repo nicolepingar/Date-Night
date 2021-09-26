@@ -96,7 +96,7 @@ formSubmitButton.on("click", FormSubmit)
 // allows the user to email their results to themselves
 $('#user-email-input-field').on('change', function () {
     $('#mail-button').attr('disabled', true);
-    if ($(this).val().length != 0 && $(this).includes("@") && $(this).includes(".com"))
+    if ($(this).val().length != 0 && $(this).val().includes("@") && $(this).val().includes(".com"))
         $('#mail-button').attr('disabled', false);
     else
         $('#mail-button').attr('disabled', true);
