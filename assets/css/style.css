@@ -6,6 +6,12 @@
     --ruby: #D81E5B;
     --papaya-whip: #FDF0D5;
     --cadet: #56666B;
+    --dark-red: #730217;
+    --lighter-red: #8C0327;
+    --nude: #A66F5B;
+    --dark-black: #0D0D0D;
+    --pinkish-red: #730237;
+    --light-violet: #8B76C2;
     --font: sans-serif;
 
 }
@@ -102,7 +108,7 @@ header {
     right: 0;
     bottom: 0;
     z-index: -1;
-    border-radius: 0 0 50% 0;
+    border-radius: 0 0 5% 5%;
     background-image: linear-gradient(to bottom left, var(--dark-purple) 10%, var(--fire-opal) 115%);
 }
 
@@ -120,6 +126,14 @@ header {
 .card__header h3 {
     color: white;
     font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.card__header h4 {
+    color: white;
+    font-size: 20px;
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
@@ -188,9 +202,9 @@ header {
     box-shadow: 0 25px 45px rgba(145, 92, 182, .4);
   }
 
-#gameId, #mealId, #drinkId {
+/* #gameId, #mealId, #drinkId {
     filter: grayscale(100%);
-}
+} */
 
 input:hover {
     cursor: text;

@@ -20,6 +20,9 @@ function FormSubmit(event) {
 
 
 function selectionValues(glass, meal, genre) {
+    formSubmitButton.text("Reroll") // when form is submitted, button text changes to reroll with dice
+    var dice = $("<i>").addClass("fas fa-dice")
+    formSubmitButton.append(dice)
     // $(".glass-select option:eq(0)").prop("selected", true);
     // $(".meal-select option:eq(0)").prop("selected", true);
     // $(".genre-select option:eq(0)").prop("selected", true);
