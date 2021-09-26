@@ -92,13 +92,13 @@ function selectionValues(glass, meal, genre) {
             })
     }
     // calls each function on click of form submit 
-// save checkpoint for images
-
+    // save checkpoint for images
     getDrink(drinkDB);
     getMeal(mealDB);
     getVid(videoGame);
     return;
 }
+// on form submit button "click", formSubmit is called
 formSubmitButton.on("click", FormSubmit)
 // allows the user to email their results to themselves
 $('#user-email-input-field').on('change', function () {
@@ -123,35 +123,25 @@ const card = $(".card__container");
 card.on('click', '.card__inner', function () {
     $(this).toggleClass('is-flipped');
 })
-
-// glow animation
-
+// card glow animation
 function glowOnSubmitAnimation() {
-let start = Date.now(); // remember start time
-
-let timer = setInterval(function() {
-  // how much time passed from the start?
-  let timePassed = Date.now() - start;
-
-  if (timePassed >= 2000) {
-    clearInterval(timer); // finish the animation after 2 seconds
-    stopGlow();
-    return;
-  }
-
-  // draw the animation at the moment timePassed
-
-
-}, 1000);
+    let start = Date.now();
+    let timer = setInterval(function () {
+        let timePassed = Date.now() - start;
+        if (timePassed >= 2000) {
+            clearInterval(timer); // finishes the animation after 2 seconds
+            stopGlow();
+            return;
+        }
+        // draws the animation at the moment timePassed
+    }, 1000);
 }
 // as timePassed goes from 0 to 2000
 // left gets values from 0px to 400px
 function glow() {
-  $(".card__face--front").css('box-shadow', ' 0 10px 35px #8B76C2');
-  $(".card__face--front").css('transition', ' box-shadow 2s ease-in-out')
-
+    $(".card__face--front").css('box-shadow', ' 0 10px 35px #8B76C2');
+    $(".card__face--front").css('transition', ' box-shadow 2s ease-in-out')
 }
-
 function stopGlow() {
     $(".card__face--front").css('box-shadow', '0px 0px 0px #888')
 }
