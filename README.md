@@ -6,7 +6,7 @@ We have created a mobile-responsive web application called date night. Date nigh
 
 ## Usage
 
-The link to the deployed application is here: https://henlowgg.github.io/Date-Night/
+The link to the deployed application is here: https://nicolepingar.github.io/Date-Night/
 
 Below is an image of the application:
 
